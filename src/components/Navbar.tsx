@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { ModeToggle } from "./ModeToggle";
+import Link from "next/link";
 
 const Navbar = () => {
     return (
@@ -17,8 +18,13 @@ const Navbar = () => {
                     />
                 </div>
                 <div className=" flex gap-2">
-                    <Button variant={"ghost"}>Home </Button>
-                    <Button variant={"ghost"}>About </Button>
+                    <Link href={"/"}>
+                        <Button variant={"ghost"}>Home </Button>
+                    </Link>
+                    <Link href={"/aboutMe"}>
+                        {" "}
+                        <Button variant={"ghost"}>About </Button>
+                    </Link>
                     <Button variant={"ghost"}>Contact </Button>
                 </div>
                 <div>

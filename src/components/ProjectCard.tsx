@@ -1,4 +1,8 @@
+"use client";
+
+import { motion } from "framer-motion";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const projects = [
     {
@@ -7,22 +11,40 @@ const projects = [
         description:
             "QR-Code based attendance monitoring system with real-time parental notification.",
         image: "/a.png",
+        linkTo: "/projects/attendance",
     },
     {
         id: 2,
         title: "Yulo's Poultry Farm",
-        description: "Online ordering platform for poultry products.",
+        description: "An Online ordering platform for poultry product.",
         image: "/egg.png",
+        linkTo: "/projects/eggpress",
     },
 ];
 
 const ProjectCard = () => {
+    const router = useRouter();
+
     return (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-5  ">
+        <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+            initial="hidden"
+            animate="visible"
+            variants={{
+                hidden: { opacity: 0 },
+                visible: { opacity: 1, transition: { staggerChildren: 0.2 } },
+            }}
+        >
             {projects.map((project) => (
-                <div
+                <motion.div
                     key={project.id}
-                    className="dark:bg-[#121212] hover:cursor-pointer dark:hover:bg-black hover:bg-gray-100  rounded-lg overflow-hidden p-4 flex flex-col items-start shadow-lg"
+                    onClick={() => router.push(project.linkTo)}
+                    className="dark:hover:bg-[#121212] hover:cursor-pointer dark:bg-black hover:bg-gray-100 rounded-lg overflow-hidden p-4 flex flex-col items-start shadow-lg"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
                 >
                     <Image
                         src={project.image}
@@ -37,9 +59,9 @@ const ProjectCard = () => {
                     <p className="text-gray-700 dark:text-gray-400 text-lg mt-1">
                         {project.description}
                     </p>
-                </div>
+                </motion.div>
             ))}
-        </div>
+        </motion.div>
     );
 };
 
