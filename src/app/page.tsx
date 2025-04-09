@@ -7,27 +7,26 @@ import { ArrowUpRight } from "lucide-react";
 
 export default function Home() {
     return (
-        <div className="flex flex-col items-center gap-10">
+        <div className="flex min-h-screen  flex-col items-center gap-10">
             {/* Header Section */}
             <motion.div
-                className="flex flex-col items-start text-start mt-20 gap-5 mr-10"
+                className="flex flex-col md:mr-56 mr-20 mt-20 gap-2 "
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
             >
-                <h1 className="md:text-4xl font-bold dark:text-white">
+                <h1 className="md:text-4xl  text-2xl font-bold dark:text-white">
                     Hey, Wendel here!
                 </h1>
-                <div className="w-[500px]">
-                    <p className="dark:text-gray-400 text-lg text-gray-700">
-                        Passionate about web full-stack development, residing in
-                        the Philippines.
-                    </p>
-                </div>
+
+                <p className="dark:text-gray-400 text-sm md:text-lg text-gray-700">
+                    Passionate about web development, <br /> residing in the
+                    Philippines.
+                </p>
             </motion.div>
 
             <motion.div
-                className="flex mr-44 gap-3"
+                className="flex md:mr-44 gap-3"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
@@ -39,17 +38,17 @@ export default function Home() {
                     LinkedIn <ArrowUpRight />
                 </Button>
                 <Button className="font-sans" variant={"outline"}>
-                    Facebook <ArrowUpRight />
+                    GitHub <ArrowUpRight />
                 </Button>
             </motion.div>
 
             <motion.div
-                className="flex flex-col mt-16 gap-7 max-w-4xl md:ml-[360px]"
+                className="flex flex-col mt-16 px-6 gap-3 max-w-4xl md:ml-[360px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
             >
-                <h1 className="text-gray-600 text-lg">Pinned</h1>
+                <h1 className="text-gray-500 text-sm md:text-md">Pinned</h1>
                 <ProjectCard />
             </motion.div>
         </div>

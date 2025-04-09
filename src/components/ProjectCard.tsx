@@ -1,8 +1,9 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
+
 import { useRouter } from "next/navigation";
+import ImageKit from "./ImageKit";
 
 const projects = [
     {
@@ -10,14 +11,14 @@ const projects = [
         title: "Attendance Monitoring System",
         description:
             "QR-Code based attendance monitoring system with real-time parental notification.",
-        image: "/a.png",
+        image: "a.png",
         linkTo: "/projects/attendance",
     },
     {
         id: 2,
         title: "Yulo's Poultry Farm",
         description: "An Online ordering platform for poultry product.",
-        image: "/egg.png",
+        image: "egg.png",
         linkTo: "/projects/eggpress",
     },
 ];
@@ -27,7 +28,7 @@ const ProjectCard = () => {
 
     return (
         <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-20"
+            className="grid  grid-cols-1 md:grid-cols-3 gap-6 mb-20"
             initial="hidden"
             animate="visible"
             variants={{
@@ -46,12 +47,13 @@ const ProjectCard = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5 }}
                 >
-                    <Image
-                        src={project.image}
+                    <ImageKit
+                        path={project.image}
                         alt={project.title}
                         width={350}
                         height={250}
                         className="w-full rounded-md object-cover"
+                        priority
                     />
                     <h1 className="dark:text-white font-semibold text-lg mt-3">
                         {project.title}

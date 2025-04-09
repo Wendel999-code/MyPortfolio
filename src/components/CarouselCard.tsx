@@ -1,4 +1,4 @@
-import * as React from "react";
+"use client";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -8,11 +8,10 @@ import {
     CarouselNext,
     CarouselPrevious,
 } from "@/components/ui/carousel";
-
-import Image from "next/image";
+import ImageKit from "./ImageKit";
 
 const CarouselCard = () => {
-    const images = ["/wendel1.jpg", "/wendel2.jpg", "/wendel3.jpg"];
+    const images = ["wendel1.jpg", "wendel2.jpg", "wendel3.jpg"];
     return (
         <div className="flex  justify-center items-center  ">
             <Carousel className="w-full max-w-xs ">
@@ -22,12 +21,13 @@ const CarouselCard = () => {
                             <div className="p-1">
                                 <Card>
                                     <CardContent className="flex aspect-square items-center justify-center p-6">
-                                        <Image
+                                        <ImageKit
                                             className="object-cover rounded-md"
-                                            src={image}
+                                            path={image}
                                             alt="my photo"
                                             width={500}
                                             height={500}
+                                            priority
                                         />
                                     </CardContent>
                                 </Card>
