@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import ProjectCard from "@/components/ProjectCard";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
     return (
@@ -34,12 +35,26 @@ export default function Home() {
                 <Button className="font-sans" variant={"outline"}>
                     Resume <ArrowUpRight />
                 </Button>
-                <Button className="font-sans" variant={"outline"}>
-                    LinkedIn <ArrowUpRight />
-                </Button>
-                <Button className="font-sans" variant={"outline"}>
-                    GitHub <ArrowUpRight />
-                </Button>
+
+                <Link
+                    href="https://github.com/Endelsab"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Button className="font-sans" variant={"outline"}>
+                        GitHub <ArrowUpRight />
+                    </Button>
+                </Link>
+
+                <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href="https://www.linkedin.com/in/wendel-sabayo-9098b9293/"
+                >
+                    <Button className="font-sans" variant={"outline"}>
+                        LinkedIn <ArrowUpRight />
+                    </Button>
+                </Link>
             </motion.div>
 
             <motion.div

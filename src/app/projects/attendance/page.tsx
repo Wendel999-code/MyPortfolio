@@ -43,7 +43,9 @@ const AttendanceProject = () => {
                         <p className="dark:text-gray-400">2024-2025</p>
                         <Link
                             className="text-lg underline underline-offset-4 hover:text-gray-700 dark:text-gray-300 text-gray-600"
-                            href={""}
+                            href="https://qr-code-attendance-eosin.vercel.app/students"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             Visit Project
                         </Link>

@@ -41,9 +41,15 @@ const EggPress = () => {
                     <div className="flex flex-col">
                         <p className="text-xl font-bold">Wendel Sabayo</p>
                         <p className="dark:text-gray-400">2024-2025</p>
+                        <span>
+                            test@gmail.com <br /> pass: JaneJoe <br />
+                            role:admin
+                        </span>
                         <Link
                             className="text-lg underline underline-offset-4 hover:text-gray-700 dark:text-gray-300 text-gray-600"
-                            href={""}
+                            href="https://poultry-capstone-git-master-wendel-sabayos-projects.vercel.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
                         >
                             Visit Project
                         </Link>
