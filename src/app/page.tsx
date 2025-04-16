@@ -32,9 +32,16 @@ export default function Home() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
             >
-                <Button className="font-sans" variant={"outline"}>
-                    Resume <ArrowUpRight />
-                </Button>
+                <Link
+                    href="/Wendel_Sabayo_CV.pdf"
+                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <Button className="font-sans" variant={"outline"}>
+                        Resume <ArrowUpRight />
+                    </Button>
+                </Link>
 
                 <Link
                     href="https://github.com/Endelsab"
