@@ -11,7 +11,7 @@ export default function Home() {
         <div className="flex min-h-screen  flex-col items-center gap-10">
             {/* Header Section */}
             <motion.div
-                className="flex flex-col md:mr-56 mr-20 mt-20 gap-2 "
+                className="flex flex-col md:mr-44 mr-20 mt-20 gap-2 "
                 initial={{ opacity: 0, y: -30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
@@ -65,7 +65,7 @@ export default function Home() {
             </motion.div>
 
             <motion.div
-                className="flex flex-col mt-16 px-6 gap-3 max-w-4xl md:ml-[360px]"
+                className="flex flex-col mt-16 px-6 gap-3 max-w-4xl md:ml-[390px]"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
