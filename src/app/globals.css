@@ -134,3 +134,8 @@
 .animate-gradient-wave {
   animation: gradient-wave 4s linear infinite;
 }
+
+
+html {
+  scroll-behavior: smooth;
+}

@@ -77,6 +77,7 @@ export default function Hero() {
 
   return (
     <div
+      id="home"
       ref={inViewRef}
       className="relative flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-red-900 via-black to-black overflow-hidden"
     >

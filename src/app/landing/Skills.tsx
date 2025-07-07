@@ -35,7 +35,7 @@ const skillLogos = [
 
 function SkillGroup({ title, skills }: { title: string; skills: string[] }) {
   return (
-    <div className="mb-8 w-full max-w-3xl">
+    <div id={"skills"} className="mb-8 w-full max-w-3xl">
       <h2 className="text-lg sm:text-xl text-red-400 font-semibold mb-3 text-center border-b border-red-700 pb-1 w-fit mx-auto">
         {title}
       </h2>

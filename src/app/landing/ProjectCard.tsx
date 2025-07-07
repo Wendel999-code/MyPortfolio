@@ -32,7 +32,7 @@ export default function ProjectCards() {
       className="relative flex flex-col items-center justify-center min-h-screen py-16 bg-gradient-to-br from-black via-black to-red-900 px-4"
     >
       <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-red-500 mb-10 text-center tracking-tight">
-        Completed Missions (Projects)
+        Projects
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-5xl mx-auto">

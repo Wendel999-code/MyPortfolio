@@ -2,11 +2,9 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
+  Carousel,
+  CarouselContent,
+  CarouselItem
 } from "@/components/ui/carousel";
 import ImageKit from "./ImageKit";
 
@@ -36,8 +34,7 @@ const CarouselCard = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        
       </Carousel>
     </div>
   );
