@@ -1,116 +1,98 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
-import Image from "next/image";
-import { useEffect } from "react";
+import { motion } from "framer-motion";
+import { Code, Server } from "lucide-react";
+import {
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiJavascript,
+  SiReact,
+  SiNextdotjs,
+  SiNodedotjs,
+  SiExpress,
+  SiPostgresql,
+  SiMysql,
+  SiMongodb,
+  SiSupabase,
+  SiFirebase,
+  SiPrisma,
+  SiGit,
+  SiGithub,
+  SiVercel,
+  SiTypescript,
+} from "react-icons/si";
 
 const frontendSkills = [
-  "HTML",
-  "JavaScript",
-  "React",
-  "Next.js",
-  "Shadcn",
-  "Tailwind CSS",
+  { name: "HTML", icon: SiHtml5, color: "#E34F26" },
+  { name: "CSS", icon: SiCss3, color: "#1572B6" },
+  { name: "Tailwind CSS", icon: SiTailwindcss, color: "#06B6D4" },
+  { name: "JavaScript", icon: SiJavascript, color: "#F7DF1E" },
+  { name: "React.js", icon: SiReact, color: "#61DAFB" },
+  { name: "Next.js", icon: SiNextdotjs, color: "#FFFFFF" },
+  { name: "TypeScript", icon: SiTypescript, color: "#3178C6" },
 ];
 
 const backendSkills = [
-  "Express",
-  "Firebase",
-  "Git",
-  "MongoDB",
-  "Neon Console",
-  "Node.js",
-  "Prisma",
-  "Supabase",
+  { name: "Node.js", icon: SiNodedotjs, color: "#339933" },
+  { name: "Express.js", icon: SiExpress, color: "#FFFFFF" },
+  { name: "PostgreSQL", icon: SiPostgresql, color: "#336791" },
+  { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+  { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+  { name: "Supabase", icon: SiSupabase, color: "#3ECF8E" },
+  { name: "Firebase", icon: SiFirebase, color: "#FFCA28" },
+  { name: "Prisma", icon: SiPrisma, color: "#2D3748" },
+  { name: "Git", icon: SiGit, color: "#F05032" },
+  { name: "GitHub", icon: SiGithub, color: "#FFFFFF" },
+  { name: "Vercel", icon: SiVercel, color: "#FFFFFF" },
 ];
 
-const skillLogos = [
-  { name: "React", src: "/logos/react.png" },
-  { name: "Next.js", src: "/logos/next.png" },
-  { name: "Node.js", src: "/logos/node.png" },
-  { name: "MongoDB", src: "/logos/mongo.png" },
-  { name: "Tailwind", src: "/logos/tailwind.png" },
-  { name: "Supabase", src: "/logos/supa.png" },
-];
-
-function SkillGroup({ title, skills }: { title: string; skills: string[] }) {
+function SkillGroup({
+  title,
+  icon: Icon,
+  skills,
+}: {
+  title: string;
+  icon: any;
+  skills: { name: string; icon: any; color: string }[];
+}) {
   return (
-    <div id={"skills"} className="mb-8 w-full max-w-3xl">
-      <h2 className="text-lg sm:text-xl text-red-400 font-semibold mb-3 text-center border-b border-red-700 pb-1 w-fit mx-auto">
-        {title}
-      </h2>
-      <div className="flex flex-wrap justify-center gap-3">
-        {skills.map((skill, index) => (
+    <motion.div
+      className="glass-card rounded-2xl p-8 w-full max-w-3xl mb-12 hover-lift hover-glow transition-all duration-500"
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <div className="flex items-center justify-center gap-3 mb-6">
+        <Icon className="w-6 h-6 text-red-400" />
+        <h2 className="text-xl md:text-2xl font-bold text-white">{title}</h2>
+      </div>
+
+      <div className="flex flex-wrap justify-center gap-5">
+        {skills.map(({ icon: SkillIcon, name, color }, index) => (
           <motion.div
-            key={skill}
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            key={name}
+            className="relative group glass-card p-3 rounded-xl border border-red-800/50 hover:border-red-500 transition-all hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,0,0.25)]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
-            className="bg-black/60 border border-red-700 text-red-400 px-3 py-1 rounded-full text-xs sm:text-sm font-medium hover:bg-red-800/30 hover:text-red-300 transition-colors cursor-default"
           >
-            {skill}
+            {/* Icon */}
+            <SkillIcon
+              className="w-8 h-8 transition-transform duration-300"
+              style={{ color }}
+            />
+
+            {/* Tooltip */}
+            <span className="absolute bottom-[-2.5rem] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-xs px-2 py-1 rounded-md pointer-events-none transition-all duration-300 whitespace-nowrap">
+              {name}
+            </span>
           </motion.div>
         ))}
       </div>
-    </div>
-  );
-}
-
-function SharinganCircle() {
-  const controls = useAnimation();
-
-  useEffect(() => {
-    controls.start({
-      rotate: 360,
-      transition: {
-        repeat: Infinity,
-        ease: "linear",
-        duration: 60,
-      },
-    });
-  }, [controls]);
-
-  const radius = 120;
-
-  return (
-    <div className="relative w-[300px] h-[300px] md:w-[350px] md:h-[350px] rounded-full border-4 border-red-700 shadow-[0_0_100px_10px_rgba(255,0,0,0.2)] bg-black/40 mt-12">
-      <motion.div
-        animate={controls}
-        className="absolute w-full h-full"
-        style={{ originX: 0.5, originY: 0.5 }}
-      >
-        {skillLogos.map((logo, index) => {
-          const angle = (index / skillLogos.length) * 2 * Math.PI;
-          const x = radius * Math.cos(angle);
-          const y = radius * Math.sin(angle);
-          return (
-            <motion.div
-              key={logo.name}
-              className="absolute"
-              style={{
-                top: `calc(50% + ${y}px)`,
-                left: `calc(50% + ${x}px)`,
-                translateX: "-50%",
-                translateY: "-50%",
-              }}
-              whileHover={{ scale: 1.15 }}
-            >
-              <Image
-                src={logo.src}
-                alt={logo.name}
-                width={32}
-                height={32}
-                className="rounded-full border border-red-600 shadow shadow-red-500 bg-black/60 p-1"
-              />
-            </motion.div>
-          );
-        })}
-      </motion.div>
-      <div className="absolute inset-0 flex items-center justify-center text-red-500 font-semibold text-sm md:text-base select-none animate-pulse">
-        My Sharingan
-      </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -118,18 +100,38 @@ export default function Skills() {
   return (
     <section
       id="skills"
-      className="relative flex flex-col items-center justify-center min-h-[90vh] py-16 px-4 bg-gradient-to-br from-black via-black to-[#1f0000]"
+      className="section-aura relative flex flex-col items-center justify-center min-h-screen py-20 px-4 bg-gradient-to-br from-black via-black to-red-950"
     >
-      <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-red-500 mb-8 text-center tracking-tight relative">
-        Skills & Technologies
-        <span className="block h-0.5 w-16 bg-red-500 mx-auto mt-2"></span>
-      </h1>
+      {/* Section Header */}
+      <motion.div
+        className="flex flex-col items-center text-center mb-6 relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <h2 className="text-4xl md:text-6xl underline-static font-display text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 mb-6">
+          Skills & Technologies
+        </h2>
+        <p className="text-gray-400 max-w-2xl mx-auto mb-12 text-sm md:text-base leading-relaxed relative z-10">
+          A balanced toolkit across the full stack — blending creativity and
+          functionality to deliver seamless user experiences.
+        </p>
+      </motion.div>
 
-      <SkillGroup title="Frontend" skills={frontendSkills} />
-      <SkillGroup title="Backend & Tools" skills={backendSkills} />
-
-      {/* Sharingan Eye with logos */}
-      <SharinganCircle />
+      {/* Skill Groups */}
+      <div className="relative z-10 flex flex-col items-center w-full">
+        <SkillGroup
+          title="Frontend Development"
+          icon={Code}
+          skills={frontendSkills}
+        />
+        <SkillGroup
+          title="Backend & Tools"
+          icon={Server}
+          skills={backendSkills}
+        />
+      </div>
     </section>
   );
 }

@@ -2,51 +2,46 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Code, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
   return (
-    <div
+    <section
       id="home"
-      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-red-900 via-black to-black"
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-black via-black to-red-950  "
     >
-      {/* Animated background gradient */}
+      {/* Main Content */}
       <motion.div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(239,68,68,0.15)_0%,transparent_70%)]"
-        animate={{
-          scale: [1, 1.2, 1],
-          opacity: [0.6, 0.8, 0.6],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Content */}
-      <motion.div
-        className="relative z-10 flex flex-col items-center text-center px-4"
+        className="relative z-10 flex flex-col items-center text-center px-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2 }}
       >
-        {/* Header */}
-        <motion.div
-          className="flex flex-col gap-4 max-w-2xl"
+        {/* Name */}
+        <motion.h1
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl underline-static md:text-6xl font-display text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 mb-6"
         >
-          <h1 className="md:text-5xl text-3xl font-bold text-red-500 tracking-tight">
-            Hey, Wendel here!
-          </h1>
-          <p className="text-gray-300 text-base md:text-lg">
-            Crafting digital experiences with the precision of a shinobi.
-            <br />
-            Full-stack developer specializing in modern web technologies.
-          </p>
+          Wendel Sabayo
+        </motion.h1>
+
+        {/* Subtitle */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+          className="flex flex-col items-center gap-2 text-gray-400 text-lg md:text-xl mb-4"
+        >
+          <div className="flex items-center gap-3">
+            <Code className="w-5 h-5 text-red-400" />
+            <span className="font-medium bg-gradient-to-l from-red-500 via-white to-red-500 bg-[length:200%_200%] bg-clip-text text-transparent animate-gradient-wave">
+              Full-Stack Developer
+            </span>
+            <Zap className="w-5 h-5 text-red-400" />
+          </div>
         </motion.div>
 
         {/* Buttons */}
@@ -54,21 +49,13 @@ export default function Hero() {
           className="flex flex-wrap justify-center gap-3 mt-8"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.8 }}
+          transition={{ delay: 1, duration: 0.8 }}
         >
           {[
             {
               href: "/Wendel_Sabayo_CV.pdf",
-              label: "Resume",
+              label: "Download CV",
               download: true,
-            },
-            {
-              href: "https://github.com/Wendel999-code",
-              label: "GitHub",
-            },
-            {
-              href: "https://www.linkedin.com/in/wendel-sabayo-9098b9293/",
-              label: "LinkedIn",
             },
           ].map(({ href, label, download }) => (
             <Link
@@ -80,7 +67,7 @@ export default function Hero() {
             >
               <Button
                 variant="ghost"
-                className="text-red-500 transition-colors border cursor-pointer hover:border-red-500 font-semibold"
+                className="text-red-500 border cursor-pointer border-red-800 bg-black/40 hover:bg-red-950/40 hover:text-white transition-colors font-semibold"
               >
                 {label} <ArrowUpRight className="ml-1 h-4 w-4" />
               </Button>
@@ -99,14 +86,13 @@ export default function Hero() {
             duration: 1.2,
           }}
           onClick={() => {
-            const missionsElement =
-              document.getElementById("completed-missions");
-            missionsElement?.scrollIntoView({ behavior: "smooth" });
+            const target = document.getElementById("projects");
+            target?.scrollIntoView({ behavior: "smooth" });
           }}
         >
           <ArrowDown className="h-8 w-8 text-red-500 animate-bounce" />
         </motion.div>
       </motion.div>
-    </div>
+    </section>
   );
 }
