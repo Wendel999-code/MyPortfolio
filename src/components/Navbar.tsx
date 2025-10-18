@@ -1,7 +1,7 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-
 import { motion } from "framer-motion";
 import { Code, Folder, Phone } from "lucide-react";
 import Link from "next/link";
@@ -13,58 +13,77 @@ const Navbar = () => {
   const navLinks = [
     { href: "/#projects", label: "Projects", icon: Folder },
     { href: "/#experience", label: "Experience", icon: Code },
-
     { href: "/#contact", label: "Contact", icon: Phone },
   ];
 
   const isActive = (href: string) => pathname === href;
 
-  return (
-    <motion.nav
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="sticky top-0 z-50 w-full backdrop-blur bg-gradient-to-br from-black via-black to-[#1f0000]"
-    >
-      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 md:px-8 py-3 md:py-4">
-        {/* Logo */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h1 className="text-lg md:text-2xl font-bold bg-[length:200%_200%] animate-gradient-wave font-display text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">
-            wndl.dev
-          </h1>
-        </motion.div>
+  const [scrollDir, setScrollDir] = useState<"up" | "down">("up");
+  const [prevScrollY, setPrevScrollY] = useState(0);
 
-        {/* Desktop Navigation */}
-        <div className=" flex space-x-1 lg:space-x-2">
-          {navLinks.map((item, idx) => (
-            <Link href={item.href} key={item.label} passHref>
-              <motion.div
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.97 }}
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY > prevScrollY) {
+        setScrollDir("down"); // scrolling down
+      } else {
+        setScrollDir("up"); // scrolling up
+      }
+      setPrevScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollY]);
+
+  return (
+    <>
+      {/* Logo remains the same */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="fixed top-4 left-4 z-50"
+      >
+        <h1 className="text-lg md:text-2xl font-bold bg-[length:200%_200%] animate-gradient-wave font-display text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700">
+          wndl.dev
+        </h1>
+      </motion.div>
+
+      {/* Floating right nav */}
+      <motion.nav
+        initial={{ opacity: 0, x: 50 }}
+        animate={{
+          opacity: 1,
+          x: scrollDir === "down" ? 80 : 0, // slide out when scrolling down
+        }}
+        transition={{ duration: 0.3, ease: "easeOut" }}
+        className={`fixed ${
+          prevScrollY > 50 ? "top-21" : "top-21"
+        } right-0 transform -translate-y-1/2 z-50 flex flex-col items-center backdrop-blur bg-black/40 rounded-l-lg border-l-2 border-red-950`}
+      >
+        {navLinks.map((item, idx) => (
+          <Link href={item.href} key={item.label} passHref>
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 + idx * 0.1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <Button
+                variant={"outline"}
+                className={`flex items-center cursor-pointer justify-items-end md:space-x-2 md:px-4 md:py-2 font-display text-xs md:text-base rounded-lg border-none transition-all duration-200
+                  hover:opacity-90
+                `}
               >
-                <Button
-                  variant={isActive(item.href) ? "secondary" : "ghost"}
-                  className={`px-1 py-1 md:px-4 md:py-2 cursor-pointer text-xs md:text-sm lg:text-base  transition-colors duration-200 font-display text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 ${
-                    isActive(item.href)
-                      ? "text-red-400 border-red-500"
-                      : "text-white hover:text-red-400"
-                  }`}
-                >
-                  {item.label}
-                </Button>
-              </motion.div>
-            </Link>
-          ))}
-        </div>
-      </div>
-    </motion.nav>
+                <span className="underline-static">{item.label}</span>
+              </Button>
+            </motion.div>
+          </Link>
+        ))}
+      </motion.nav>
+    </>
   );
 };
 

@@ -73,20 +73,17 @@ function SkillGroup({
         {skills.map(({ icon: SkillIcon, name, color }, index) => (
           <motion.div
             key={name}
-            className="relative group glass-card p-3 rounded-xl border border-red-800/50 hover:border-red-500 transition-all hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,0,0.25)]"
+            className="relative group glass-card p-3 sm:p-4 rounded-xl border border-red-800 transition-all hover:scale-110 shadow-[0_0_20px_rgba(255,0,0,0.25)]"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 0.3, delay: index * 0.05 }}
           >
-            {/* Icon */}
             <SkillIcon
-              className="w-8 h-8 transition-transform duration-300"
+              className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 transition-transform duration-300"
               style={{ color }}
             />
-
-            {/* Tooltip */}
-            <span className="absolute bottom-[-2.5rem] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-xs px-2 py-1 rounded-md pointer-events-none transition-all duration-300 whitespace-nowrap">
+            <span className="absolute bottom-[-2.3rem] left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 bg-black/80 text-white text-[10px] sm:text-xs px-2 py-1 rounded-md pointer-events-none transition-all duration-300 whitespace-nowrap">
               {name}
             </span>
           </motion.div>
@@ -107,7 +104,7 @@ export default function Skills() {
         className="flex flex-col items-center text-center mb-6 relative z-10"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: false }}
         transition={{ duration: 0.8 }}
       >
         <h2 className="text-4xl md:text-6xl underline-static font-display text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 mb-6">

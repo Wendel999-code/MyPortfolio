@@ -8,11 +8,12 @@ export default function Experience() {
     {
       company: "Codebility",
       role: "Full Stack Developer Intern",
-      date: "May 2025 - October 2025",
+      //TODO update date in occordance with internship progress
+      date: "May 2025 - Present",
       location: "Remote",
       details: [
         "Developed and maintained web applications using Next.js.",
-        "Collaborated with cross-functional teams to design and implement new features and fix bugs.",
+        "Collaborated with cross-functional teams to design and implement new features and fixing bugs.",
         "Implemented responsive design and ensured cross-browser compatibility.",
       ],
     },
@@ -39,7 +40,7 @@ export default function Experience() {
           className="flex flex-col items-center text-center mb-16 mt-10"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-6xl font-display underline-static text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-red-700 mb-6">
@@ -59,7 +60,7 @@ export default function Experience() {
           <div className="absolute left-6 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-600 via-red-800 to-transparent" />
 
           {/* Professional Experience */}
-          <h3 className="text-2xl font-bold text-white mb-10 flex items-center justify-center gap-3 text-center">
+          <h3 className="text-xl font-bold text-white mb-10 flex items-center justify-center gap-3 text-center">
             <Briefcase className="w-6 h-6 text-red-500" />
             Professional Experience
           </h3>
@@ -70,7 +71,7 @@ export default function Experience() {
               className="relative flex flex-col sm:flex-row gap-6 mb-12 sm:pl-16"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               {/* Timeline Dot */}
@@ -133,7 +134,7 @@ export default function Experience() {
               className="relative flex flex-col sm:flex-row gap-6 mb-12 sm:pl-16"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: false }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
             >
               <div className="absolute left-3 sm:left-5 top-2">

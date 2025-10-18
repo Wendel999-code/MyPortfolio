@@ -24,28 +24,44 @@ const projects = [
   },
 ];
 
+// Container for staggered entrance
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.15 },
+  },
+};
+
+// Each card slides in from right
+const cardVariants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.6, ease: [0.25, 0.1, 0.25, 1] },
+  },
+};
+
 export default function ProjectCards() {
   return (
     <section
       id="projects"
       className="relative flex flex-col items-center min-h-screen py-16 px-4 overflow-hidden bg-gradient-to-br from-black via-black to-red-950"
     >
-      {/* Section Title */}
+      {/* Title */}
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className="text-3xl md:text-4xl underline-static font-bold text-red-500 mb-8 text-center tracking-tight relative z-10"
       >
         My Works
       </motion.h1>
 
-      {/* Section Description */}
+      {/* Description */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.3 }}
         className="text-center text-gray-400 max-w-2xl mx-auto mb-12 text-sm md:text-base leading-relaxed relative z-10"
       >
@@ -54,28 +70,43 @@ export default function ProjectCards() {
       </motion.p>
 
       {/* Project Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: false, amount: 0.2 }}
+        className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto"
+      >
         {projects.map((project, index) => (
           <motion.div
             key={project.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: index * 0.15 }}
-            className="bg-black/40 rounded-lg overflow-hidden shadow-md shadow-red-700/20 hover:scale-[1.02] transition-ease-in-out duration-75 flex flex-col w-full hover:shadow-[0_0_20px_rgba(255,0,0,0.25)]  max-w-[300px] sm:max-w-[320px] mx-auto"
+            initial={{ opacity: 0, x: 80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            whileHover={{ scale: 1.03, y: -4 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
+            className="bg-black/40 rounded-lg overflow-hidden shadow-md shadow-red-700/20 flex flex-col w-full max-w-[300px] sm:max-w-[320px] mx-auto hover:shadow-[0_0_20px_rgba(255,0,0,0.25)]"
           >
-            <Image
-              src={project.image}
-              alt={project.title}
-              width={400}
-              height={250}
-              className="w-full object-cover h-40 sm:h-44"
-            />
+            <div className="overflow-hidden">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+              >
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  width={400}
+                  height={250}
+                  className="w-full object-cover h-40 sm:h-44"
+                />
+              </motion.div>
+            </div>
+
             <div className="p-4 flex flex-col justify-between flex-1">
               <h2 className="text-base sm:text-lg font-semibold text-red-500 mb-2 text-center">
                 {project.title}
               </h2>
-              <p className="text-gray-300 text-xs sm:text-sm mb-3  indent-2 text-justify">
+              <p className="text-gray-300 text-xs sm:text-sm mb-3 indent-2 text-justify">
                 {project.description}
               </p>
 
@@ -97,7 +128,7 @@ export default function ProjectCards() {
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 }
