@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowDown, Code, Download, Zap } from "lucide-react";
+import { ArrowDown, Code, Zap } from "lucide-react";
 import Link from "next/link";
 
 export default function Hero() {
@@ -55,7 +55,7 @@ export default function Hero() {
           transition={{ delay: 0.6, duration: 0.8, ease: "easeOut" }}
         >
           <Link
-            href="/Wendel_Sabayo_CV.pdf"
+            href="/wendel_sabayo.pdf"
             download
             target="_blank"
             rel="noopener noreferrer"
