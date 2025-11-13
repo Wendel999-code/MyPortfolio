@@ -9,7 +9,7 @@ export default function Experience() {
       company: "Codebility",
       role: "Full Stack Developer Intern",
       //TODO update date in occordance with internship progress
-      date: "May 2025 - Present",
+      date: "May 2025 - October 2025",
       location: "Remote",
       details: [
         "Developed and maintained web applications using Next.js.",
