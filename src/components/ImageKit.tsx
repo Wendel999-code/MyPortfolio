@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 "use client";
+
 import React from "react";
 import { IKImage } from "imagekitio-next";
 
@@ -11,5 +10,3 @@ const ImageKit = (props: any) => {
 };
 
 export default ImageKit;
-
-/* eslint-enable @typescript-eslint/no-explicit-any */
