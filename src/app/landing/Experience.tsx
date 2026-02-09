@@ -6,6 +6,18 @@ import { Briefcase, Calendar, MapPin, Award } from "lucide-react";
 export default function Experience() {
   const experiences = [
     {
+      company: "Foundever",
+      role: "IT Support Intern",
+      date: "November 2025 - February 2026",
+      location: "Mandaluyong City, Philippines | Onsite",
+      details: [
+        "Provided first-level technical support through basic hardware and software troubleshooting.",
+        "Assisted with user account management and access control using Active Directory.",
+        "Supported onsite staff by resolving technical issues in a fast-paced environment.",
+        "Developed strong face-to-face communication skills through direct interaction with end users.",
+      ],
+    },
+    {
       company: "Codebility",
       role: "Full Stack Developer Intern",
       //TODO update date in occordance with internship progress
