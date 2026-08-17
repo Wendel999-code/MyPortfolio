@@ -6,23 +6,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 const projects = [
-  {
-    title: "Cana Circuit",
-    image: "/cana.png",
-    description:
-      "Cana Circuit is a local UCCP congregation covering nine barangays, built to streamline its administrative and community operations.",
-    tech: ["Next.js", "Supabase", "Shadcn", "Tailwind CSS"],
-    link: "https://uccp.wndl.dev/",
-  },
-  {
-    title: "Learn and Go",
-    image: "/learnandgo.png",
-    description:
-      "Learn & Go is a modern platform that simplifies driver’s license enrollment, connects learners with trusted schools, and streamlines the journey from registration to certification.",
-    tech: ["Next.js", "Neon", "Prisma", "Resend", "Shadcn", "Tailwind CSS"],
-    link: "https://learn-and-go.wndl.dev/",
-  },
-  {
+    {
     title: "TapUp",
     image: "/tapup.png",
     description:
@@ -30,6 +14,23 @@ const projects = [
     link: "https://www.tapup.tech/",
     category: "intern",
   },
+  {
+    title: "Cana Circuit",
+    image: "/cana.png",
+    description:
+      "Cana Circuit is a local UCCP congregation covering nine barangays, built to streamline its administrative and community operations.",
+    tech: ["Next.js", "Supabase", "Shadcn", "Tailwind CSS"],
+    link: "https://uccp-wndl-dev.vercel.app/",
+  },
+  {
+    title: "Learn and Go",
+    image: "/learnandgo.png",
+    description:
+      "Learn & Go is a modern platform that simplifies driver’s license enrollment, connects learners with trusted schools, and streamlines the journey from registration to certification.",
+    tech: ["Next.js", "Neon", "Prisma", "Resend", "Shadcn", "Tailwind CSS"],
+    link: "https://learn-and-go-wndl-dev.vercel.app/",
+  },
+
 ];
 
 // Container for staggered entrance
